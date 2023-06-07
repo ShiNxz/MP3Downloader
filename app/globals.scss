@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+	direction: rtl;
+}
+
+:root {
+	// --toastify-font-family: 'Rubik', sans-serif, Arial, Helvetica, sans-serif !important;
+	--nextui-borderWeights-light: 0 !important;
+	--toastify-color-dark: #171920 !important;
+	// --nextui-fonts-sans: 'RubikNw', sans-serif, Arial, Helvetica, sans-serif !important;
+}
+
+.Toastify__toast-theme--dark {
+	background-color: #17192050 !important;
+	backdrop-filter: blur(15px) !important;
+	font-weight: 400;
+}
+
+.Toastify__toast-container {
+	z-index: 100000 !important;
+}
