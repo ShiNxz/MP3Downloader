@@ -16,6 +16,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 			const song = await getInfo(url)
 			if (!song) return res.status(400).json({ error: 'Invalid YouTube URL' })
 
+			if (Math.floor(parseInt(song.videoDetails.lengthSeconds)) > 7200)
+				return res.status(400).json({ error: 'Video is too long' })
+
 			const newSong = {
 				title: song.videoDetails.title.slice(0, 50),
 				thumbnail: song.videoDetails.thumbnails[0].url,
