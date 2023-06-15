@@ -19,6 +19,7 @@
 		"@types/react-dom": "18.2.4",
 		"autoprefixer": "10.4.14",
 		"axios": "^1.4.0",
+		"content-disposition": "^0.5.4",
 		"downloadjs": "^1.4.7",
 		"eslint": "8.40.0",
 		"eslint-config-next": "13.4.1",
@@ -35,6 +36,7 @@
 		"ytpl": "^2.3.0"
 	},
 	"devDependencies": {
+		"@types/content-disposition": "^0.5.5",
 		"@types/downloadjs": "^1.4.3",
 		"@types/node": "20.2.5"
 	}

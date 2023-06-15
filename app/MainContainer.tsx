@@ -164,7 +164,8 @@ export default MainContainer
 
 // extract the youtube video playlist id
 const extractPlaylistId = (url: string) => {
-	var reg = new RegExp('[&?]list=([a-z0-9_]+)', 'i')
+	console.log(url)
+	var reg = new RegExp('[&?]list=([a-z0-9_-]+)', 'i')
 	var match = reg.exec(url)
 
 	if (match && match[1].length > 0) {

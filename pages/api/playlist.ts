@@ -13,18 +13,24 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	switch (method) {
 		case 'GET': {
 			const { url } = req.query as { url: string }
-			const playlist = await ytpl(url)
-			if (!playlist) return res.status(400).json({ error: 'Invalid YouTube URL' })
 
-			const items = playlist.items
-				.filter((item) => item && item.durationSec && item.durationSec < 7200)
-				.map((item) => ({
-					title: item.title.slice(0, 50),
-					url: item.shortUrl,
-					thumbnail: item.bestThumbnail.url,
-				}))
+			try {
+				const playlist = await ytpl(url)
+				if (!playlist) return res.status(400).json({ error: 'Invalid YouTube URL' })
 
-			return res.status(200).json(items)
+				const items = playlist.items
+					.filter((item) => item && item.durationSec && item.durationSec < 7200)
+					.map((item) => ({
+						title: item.title.slice(0, 50),
+						url: item.shortUrl,
+						thumbnail: item.bestThumbnail.url,
+					}))
+
+				return res.status(200).json(items)
+			} catch (error) {
+				console.error(error)
+				return res.status(400).json({ error })
+			}
 		}
 
 		default:
